@@ -1,4 +1,4 @@
-package employeefile;
+package t2p1a;
 
 import java.util.Scanner;
 
@@ -10,6 +10,13 @@ public class EmployeeApp {
 
     EmployeeDAO empList = new EmployeeDAO();
     Scanner sc = new Scanner(System.in);
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        new EmployeeApp();
+    }
 
     public EmployeeApp() {
         menuLoop();
@@ -66,10 +73,4 @@ public class EmployeeApp {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        new EmployeeApp();
-    }
 }

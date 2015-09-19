@@ -1,4 +1,4 @@
-package employeefile;
+package t2p1a;
 
 import java.util.Scanner;
 
