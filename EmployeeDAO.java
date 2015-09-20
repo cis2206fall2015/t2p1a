@@ -1,4 +1,4 @@
-package t2p1a;
+//package t2p1a;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
