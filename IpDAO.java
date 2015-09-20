@@ -15,16 +15,16 @@ import java.util.List;
  *
  * @author Your Name Here
  */
-public class EmployeeDAO {
+public class IpDAO {
 
     private final String fileName;
     protected final List<Employee> myList;
 
-    public EmployeeDAO() {
-        this("empdata.txt");
+    public IpDAO() {
+        this("ipdata.txt");
     }
 
-    public EmployeeDAO(String fileName) {
+    public IpDAO(String fileName) {
         this.fileName = fileName;
         this.myList = new ArrayList<>();
         try {
