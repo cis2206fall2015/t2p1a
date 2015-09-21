@@ -18,7 +18,7 @@ import java.util.List;
 public class IpDAO {
 
     private final String fileName;
-    protected final List<Employee> myList;
+    protected final List<Address> myList;
 
     public IpDAO() {
         this("ipdata.txt");
@@ -37,27 +37,27 @@ public class IpDAO {
         readList();
     }
 
-    public void createRecord(Employee employee) {
-        myList.add(employee);
+    public void createRecord(Address address) {
+        myList.add(address);
         writeList();
     }
 
-    public Employee retrieveRecord(int id) {
-        for (Employee employee : myList) {
-            if (employee.getEmpId() == id) {
-                return employee;
+    public Address retrieveRecord(int id) {
+        for (Address address : myList) {
+            if (address.getEmpId() == id) {
+                return address;
             }
         }
         return null;
     }
 
-    public void updateRecord(Employee updatedEmployee) {
-        for (Employee employee : myList) {
-            if (employee.getEmpId() == updatedEmployee.getEmpId()) {
-                employee.setLastName(updatedEmployee.getLastName());
-                employee.setFirstName(updatedEmployee.getFirstName());
-                employee.setHomePhone(updatedEmployee.getHomePhone());
-                employee.setSalary(updatedEmployee.getSalary());
+    public void updateRecord(Address updatedAddress) {
+        for (Address address : myList) {
+            if (address.getEmpId() == updatedAddress.getEmpId()) {
+                address.setLastName(updatedAddress.getLastName());
+                address.setFirstName(updatedAddress.getFirstName());
+                address.setHomePhone(updatedAddress.getHomePhone());
+                address.setSalary(updatedAddress.getSalary());
                 break;
             }
         }
@@ -65,17 +65,17 @@ public class IpDAO {
     }
 
     public void deleteRecord(int id) {
-        for (Employee employee : myList) {
-            if (employee.getEmpId() == id) {
-                myList.remove(employee);
+        for (Address address : myList) {
+            if (address.getEmpId() == id) {
+                myList.remove(address);
                 break;
             }
         }
         writeList();
     }
 
-    public void deleteRecord(Employee employee) {
-        myList.remove(employee);
+    public void deleteRecord(Address address) {
+        myList.remove(address);
         writeList();
     }
 
@@ -90,8 +90,8 @@ public class IpDAO {
                 String first = data[2];
                 String homePhone = data[3];
                 double salary = Double.parseDouble(data[4]);
-                Employee employee = new Employee(id, last, first, homePhone, salary);
-                myList.add(employee);
+                Address address = new Address(id, last, first, homePhone, salary);
+                myList.add(address);
             }
         } catch (IOException ioe) {
             System.out.println("Read file error with " + ioe.getMessage());
@@ -101,13 +101,13 @@ public class IpDAO {
     protected void writeList() {
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
-            for (Employee employee : myList) {
+            for (Address address : myList) {
                 writer.write(String.format("%d,%s,%s,%s,%.2f\n",
-                        employee.getEmpId(),
-                        employee.getLastName(),
-                        employee.getFirstName(),
-                        employee.getHomePhone(),
-                        employee.getSalary()));
+                        address.getEmpId(),
+                        address.getLastName(),
+                        address.getFirstName(),
+                        address.getHomePhone(),
+                        address.getSalary()));
             }
         } catch (IOException ioe) {
             System.out.println("Write file error with " + ioe.getMessage());
@@ -118,10 +118,10 @@ public class IpDAO {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        myList.stream().forEach((employee) -> {
-            sb.append(String.format("%5d : %s, %s, %s, %.2f\n", employee.getEmpId(),
-                    employee.getLastName(), employee.getFirstName(),
-                    employee.getHomePhone(), employee.getSalary()));
+        myList.stream().forEach((address) -> {
+            sb.append(String.format("%5d : %s, %s, %s, %.2f\n", address.getEmpId(),
+                    address.getLastName(), address.getFirstName(),
+                    address.getHomePhone(), address.getSalary()));
         });
 
         return sb.toString();

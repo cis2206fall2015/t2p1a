@@ -42,27 +42,27 @@ public class IpApp {
                     System.out.println(ipList.toString());
                     break;
                 case "2":
-                    id = Validator.getInt(sc, "New employee ID: ");
+                    id = Validator.getInt(sc, "New address ID: ");
                     last = Validator.getLine(sc, "Last name: ");
                     first = Validator.getLine(sc, "First name: ");
                     homePhone = Validator.getLine(sc, "Home phone number: ");
                     salary = Validator.getDouble(sc, "Yearly salary: ");
-                    ipList.createRecord(new Employee(id, last, first, homePhone, salary));
+                    ipList.createRecord(new Address(id, last, first, homePhone, salary));
                     break;
                 case "3":
-                    id = Validator.getInt(sc, "Employee id to retrieve: ");
+                    id = Validator.getInt(sc, "Address id to retrieve: ");
                     System.out.println(ipList.retrieveRecord(id));
                     break;
                 case "4":
-                    id = Validator.getInt(sc, "Employee ID to update: ");
+                    id = Validator.getInt(sc, "Address ID to update: ");
                     last = Validator.getLine(sc, "Last name: ");
                     first = Validator.getLine(sc, "First name: ");
                     homePhone = Validator.getLine(sc, "Home phone number: ");
                     salary = Validator.getDouble(sc, "Yearly salary: ");
-                    ipList.updateRecord(new Employee(id, last, first, homePhone, salary));
+                    ipList.updateRecord(new Address(id, last, first, homePhone, salary));
                     break;
                 case "5":
-                    id = Validator.getInt(sc, "Employee ID to delete: ");
+                    id = Validator.getInt(sc, "Address ID to delete: ");
                     System.out.println(ipList.retrieveRecord(id));
                     String ok = Validator.getLine(sc, "Deleter this record? (y/n) ", "^[yYnN]$");
                     if (ok.equalsIgnoreCase("Y")) {

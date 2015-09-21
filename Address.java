@@ -4,7 +4,7 @@
  *
  * @author Your Name Here
  */
-public class Employee {
+public class Address {
 
     private int empId;
     private String lastName;
@@ -12,7 +12,7 @@ public class Employee {
     private String homePhone;
     private double salary;
 
-    public Employee() {
+    public Address() {
         empId = 0;
         lastName = "";
         firstName = "";
@@ -20,7 +20,7 @@ public class Employee {
         salary = 0;
     }
 
-    public Employee(int empId, String lastName, String firstName, String homePhone, double salary) {
+    public Address(int empId, String lastName, String firstName, String homePhone, double salary) {
         this.empId = empId;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -70,7 +70,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" + "empId=" + empId + ", lastName=" + lastName 
+        return "Address{" + "empId=" + empId + ", lastName=" + lastName 
                 + ", firstName=" + firstName + ", homePhone=" + homePhone 
                 + ", salary=" + salary + '}';
     }
