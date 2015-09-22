@@ -6,72 +6,61 @@
  */
 public class Address {
 
-    private int empId;
-    private String lastName;
-    private String firstName;
-    private String homePhone;
-    private double salary;
+    private int ipID;
+    private String shortIP;
+    private String entryDate;
+    private String numAccess;
 
     public Address() {
-        empId = 0;
-        lastName = "";
-        firstName = "";
-        homePhone = "";
-        salary = 0;
+        ipId = 0;
+        shortIP = "";
+        entryDate = "";
+        numAccess = "0";
     }
 
-    public Address(int empId, String lastName, String firstName, String homePhone, double salary) {
-        this.empId = empId;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.homePhone = homePhone;
-        this.salary = salary;
+    public Address(int ipId, String shortIP, String entryDate) {
+        this.ipId = ipId;
+        this.shortIP = shortIP;
+        this.entryDate = entryDate;
+        this.numAccess = 0;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getEntryDate() {
+        return entryDate;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
     }
 
-    public int getEmpId() {
-        return empId;
+    public int getIpID() {
+        return ipId;
     }
 
-    public void setEmpId(int empId) {
-        this.empId = empId;
+    public void setIpID(int ipId) {
+        this.ipId = ipId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getShortIP() 
+        return shortIP;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setShortIP(String shortIP) {
+        this.shortIP = shortIP;
     }
 
-    public String getHomePhone() {
-        return homePhone;
+    public String getNumAccess() {
+        return numAccess;
     }
 
-    public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
+    public void setNumAccess(String numAccess) {
+        this.numAccess = numAccess;
     }
 
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
 
     @Override
     public String toString() {
-        return "Address{" + "empId=" + empId + ", lastName=" + lastName 
-                + ", firstName=" + firstName + ", homePhone=" + homePhone 
-                + ", salary=" + salary + '}';
+        return "IPAddress{" + "Entry ID=" + ipId + ", Short IP=" + shortIP 
+                + ", Entry Creation Date=" + entryDate + ", # Times Accessed=" + numAccess'}';
     }
 }
