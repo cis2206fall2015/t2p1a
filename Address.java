@@ -6,23 +6,23 @@
  */
 public class Address {
 
-    private int ipID;
+    private int ipId;
     private String shortIP;
     private String entryDate;
-    private String numAccess;
+    private int numAccess;
 
     public Address() {
         ipId = 0;
         shortIP = "";
         entryDate = "";
-        numAccess = "0";
+        numAccess = 0;
     }
 
     public Address(int ipId, String shortIP, String entryDate) {
         this.ipId = ipId;
         this.shortIP = shortIP;
         this.entryDate = entryDate;
-        this.numAccess = 0;
+       	numAccess = 0;
     }
 
     public String getEntryDate() {
@@ -41,7 +41,7 @@ public class Address {
         this.ipId = ipId;
     }
 
-    public String getShortIP() 
+    public String getShortIP() {
         return shortIP;
     }
 
@@ -49,11 +49,11 @@ public class Address {
         this.shortIP = shortIP;
     }
 
-    public String getNumAccess() {
+    public int getNumAccess() {
         return numAccess;
     }
 
-    public void setNumAccess(String numAccess) {
+    public void setNumAccess(int numAccess) {
         this.numAccess = numAccess;
     }
 
@@ -61,6 +61,6 @@ public class Address {
     @Override
     public String toString() {
         return "IPAddress{" + "Entry ID=" + ipId + ", Short IP=" + shortIP 
-                + ", Entry Creation Date=" + entryDate + ", # Times Accessed=" + numAccess'}';
+                + ", Entry Creation Date=" + entryDate + ", # Times Accessed=" + numAccess + '}';
     }
 }

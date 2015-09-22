@@ -24,8 +24,7 @@ public class IpApp {
 
     private void menuLoop() {
         int id;
-        String last, first, homePhone;
-        double salary;
+        String ip, date;
         String choice = "1";
         while (!choice.equals("0")) {
             System.out.println("\nIP Tracking Program");
@@ -43,11 +42,9 @@ public class IpApp {
                     break;
                 case "2":
                     id = Validator.getInt(sc, "New address ID: ");
-                    last = Validator.getLine(sc, "Last name: ");
-                    first = Validator.getLine(sc, "First name: ");
-                    homePhone = Validator.getLine(sc, "Home phone number: ");
-                    salary = Validator.getDouble(sc, "Yearly salary: ");
-                    ipList.createRecord(new Address(id, last, first, homePhone, salary));
+                    ip = Validator.getLine(sc, "IP Address: ");
+                    date = Validator.getLine(sc, "Entry Creation Date: ");
+                    ipList.createRecord(new Address(id, ip, date));
                     break;
                 case "3":
                     id = Validator.getInt(sc, "Address id to retrieve: ");
@@ -55,11 +52,9 @@ public class IpApp {
                     break;
                 case "4":
                     id = Validator.getInt(sc, "Address ID to update: ");
-                    last = Validator.getLine(sc, "Last name: ");
-                    first = Validator.getLine(sc, "First name: ");
-                    homePhone = Validator.getLine(sc, "Home phone number: ");
-                    salary = Validator.getDouble(sc, "Yearly salary: ");
-                    ipList.updateRecord(new Address(id, last, first, homePhone, salary));
+                    ip = Validator.getLine(sc, "IP Address: ");
+                    date = Validator.getLine(sc, "Entry Creation Date: ");
+                    ipList.updateRecord(new Address(id, ip, date));
                     break;
                 case "5":
                     id = Validator.getInt(sc, "Address ID to delete: ");

@@ -44,7 +44,7 @@ public class IpDAO {
 
     public Address retrieveRecord(int id) {
         for (Address address : myList) {
-            if (address.getEmpId() == id) {
+            if (address.getIpID() == id) {
                 return address;
             }
         }
@@ -53,11 +53,10 @@ public class IpDAO {
 
     public void updateRecord(Address updatedAddress) {
         for (Address address : myList) {
-            if (address.getEmpId() == updatedAddress.getEmpId()) {
-                address.setLastName(updatedAddress.getLastName());
-                address.setFirstName(updatedAddress.getFirstName());
-                address.setHomePhone(updatedAddress.getHomePhone());
-                address.setSalary(updatedAddress.getSalary());
+            if (address.getIpID() == updatedAddress.getIpID()) {
+                address.setShortIP(updatedAddress.getShortIP());
+                address.setEntryDate(updatedAddress.getEntryDate());
+                address.setNumAccess(updatedAddress.getNumAccess());
                 break;
             }
         }
@@ -66,7 +65,7 @@ public class IpDAO {
 
     public void deleteRecord(int id) {
         for (Address address : myList) {
-            if (address.getEmpId() == id) {
+            if (address.getIpID() == id) {
                 myList.remove(address);
                 break;
             }
@@ -86,11 +85,10 @@ public class IpDAO {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 int id = Integer.parseInt(data[0]);
-                String last = data[1];
-                String first = data[2];
-                String homePhone = data[3];
-                double salary = Double.parseDouble(data[4]);
-                Address address = new Address(id, last, first, homePhone, salary);
+                String ip = data[1];
+                String entrydate = data[2];
+                int numAccess = Integer.parseInt(data[3]);
+                Address address = new Address(id, ip, entrydate);
                 myList.add(address);
             }
         } catch (IOException ioe) {
@@ -102,13 +100,12 @@ public class IpDAO {
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             for (Address address : myList) {
-                writer.write(String.format("%d,%s,%s,%s,%.2f\n",
-                        address.getEmpId(),
-                        address.getLastName(),
-                        address.getFirstName(),
-                        address.getHomePhone(),
-                        address.getSalary()));
-            }
+                writer.write(String.format("%d,%s,%s,%d\n",
+                        address.getIpID(),
+                        address.getShortIP(),
+                        address.getEntryDate(),
+                        address.getNumAccess()
+            ));}
         } catch (IOException ioe) {
             System.out.println("Write file error with " + ioe.getMessage());
         }
@@ -119,9 +116,9 @@ public class IpDAO {
         StringBuilder sb = new StringBuilder();
 
         myList.stream().forEach((address) -> {
-            sb.append(String.format("%5d : %s, %s, %s, %.2f\n", address.getEmpId(),
-                    address.getLastName(), address.getFirstName(),
-                    address.getHomePhone(), address.getSalary()));
+            sb.append(String.format("%5d : %s, %s, %d", address.getIpID(),
+                    address.getShortIP(), address.getEntryDate(),
+                    address.getNumAccess()));
         });
 
         return sb.toString();
