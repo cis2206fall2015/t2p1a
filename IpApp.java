@@ -1,6 +1,8 @@
 //package t2p1a;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  *
@@ -10,7 +12,9 @@ public class IpApp {
 
     IpDAO ipList = new IpDAO();
     Scanner sc = new Scanner(System.in);
-    String ipRegex = "^\\d\\d\\d\\.(\\d){2,3}(\\.\\d*\\.\\d*)?$";
+    String ipRegexString = "(^\\d\\d\\d\\.(\\d){2,3})(\\.\\d*\\.\\d*)?$";
+    Pattern ipRegex = Pattern.compile(ipRegexString);
+    Matcher ipMatcher;
 
     /**
      * @param args the command line arguments
@@ -25,7 +29,8 @@ public class IpApp {
 
     private void menuLoop() {
         int id;
-        String ip, date;
+        String rawIp, date;
+	String ip = "Error- Short ip not set. No regex match found.";
         String choice = "1";
         while (!choice.equals("0")) {
             System.out.println("\nIP Tracking Program");
@@ -43,7 +48,11 @@ public class IpApp {
                     break;
                 case "2":
                     id = Validator.getInt(sc, "New address ID: ");
-                    ip = Validator.getLine(sc, "IP Address: ", ipRegex); 
+                    rawIp = Validator.getLine(sc, "IP Address: ", ipRegexString);
+		    ipMatcher = ipRegex.matcher(rawIp);
+		    while (ipMatcher.find()) {
+		    	ip = ipMatcher.group(1);
+		    }
                     date = Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.createRecord(new Address(id, ip, date));
                     break;
@@ -53,7 +62,11 @@ public class IpApp {
                     break;
                 case "4":
                     id = Validator.getInt(sc, "Address ID to update: ");
-                    ip = Validator.getLine(sc, "IP Address: ", ipRegex);
+                    rawIp = Validator.getLine(sc, "IP Address: ", ipRegexString);
+		    ipMatcher = ipRegex.matcher(rawIp);
+		    while (ipMatcher.find()) {
+		    	ip = ipMatcher.group(1);
+		    }
                     date = Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.updateRecord(new Address(id, ip, date));
                     break;
