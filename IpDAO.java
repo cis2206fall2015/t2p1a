@@ -42,7 +42,7 @@ public class IpDAO {
 	boolean redundant = false;
 	for (int i = 0; i < myList.size(); i++) {
 		currentEntry = myList.get(i);
-		if (address.equals(currentEntry.getShortIP())) {
+		if (address.getShortIP().equals(currentEntry.getShortIP())) {
 			myList.get(i).setNumAccess(currentEntry.getNumAccess() + 1);
 			redundant = true;	
 			break;
