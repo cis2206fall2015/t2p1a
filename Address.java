@@ -22,7 +22,7 @@ public class Address {
         this.ipId = ipId;
         this.shortIP = shortIP;
         this.entryDate = entryDate;
-       	numAccess = 0;
+       	numAccess = 1;
     }
 
     public String getEntryDate() {
