@@ -10,6 +10,7 @@ public class IpApp {
 
     IpDAO ipList = new IpDAO();
     Scanner sc = new Scanner(System.in);
+    String ipRegex = "^\\d\\d\\d\\.(\\d){2,3}(\\.\\d*\\.\\d*)?$";
 
     /**
      * @param args the command line arguments
@@ -42,7 +43,7 @@ public class IpApp {
                     break;
                 case "2":
                     id = Validator.getInt(sc, "New address ID: ");
-                    ip = Validator.getLine(sc, "IP Address: ");
+                    ip = Validator.getLine(sc, "IP Address: ", ipRegex); 
                     date = Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.createRecord(new Address(id, ip, date));
                     break;
@@ -52,7 +53,7 @@ public class IpApp {
                     break;
                 case "4":
                     id = Validator.getInt(sc, "Address ID to update: ");
-                    ip = Validator.getLine(sc, "IP Address: ");
+                    ip = Validator.getLine(sc, "IP Address: ", ipRegex);
                     date = Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.updateRecord(new Address(id, ip, date));
                     break;
