@@ -38,7 +38,19 @@ public class IpDAO {
     }
 
     public void createRecord(Address address) {
-        myList.add(address);
+	Address currentEntry;
+	boolean redundant = false;
+	for (int i = 0; i < myList.size(); i++) {
+		currentEntry = myList.get(i);
+		if (address.equals(currentEntry.getShortIP())) {
+			myList.get(i).setNumAccess(currentEntry.getNumAccess() + 1);
+			redundant = true;	
+			break;
+		}
+	}
+	if (redundant != true) {
+        	myList.add(address);
+	}
         writeList();
     }
 
