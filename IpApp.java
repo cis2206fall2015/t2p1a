@@ -66,7 +66,7 @@ public class IpApp {
 		    while (ipMatcher.find()) {
 		    	ip = ipMatcher.group(1);
 		    }
-                    date = Validator.getLine(sc, "Entry Creation Date: ");
+                    date = "";//Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.createRecord(new Address(id, ip, date));
                     break;
 		/**

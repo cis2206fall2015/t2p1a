@@ -1,5 +1,8 @@
 //package t2p1a;
 
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -55,6 +58,7 @@ public class IpDAO {
     public void createRecord(Address address) {
 	Address currentEntry;
 	boolean redundant = false;
+	//int dupId = currentEntry.getIpID();
 	for (int i = 0; i < myList.size(); i++) {
 		currentEntry = myList.get(i);
 		if (address.getShortIP().equals(currentEntry.getShortIP())) {
@@ -63,6 +67,17 @@ public class IpDAO {
 			break;
 		}
 	}
+	String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+	address.setEntryDate(timeStamp);
+	//for (int d = 0; d < myList.size(); d++){
+	//	currentEntry = myList.get(d);
+	//	if (address.getIpID() == (currentEntry.getIpID())){
+	//		System.out.println("Error: A record is already using "+(dupId));
+	//		currentEntry.setIpID(Validator.getLine());//sc, "New address ID: ")); <--- broken. can't use sc because sc doesn't exist here.
+	//		d = 0;
+	//	}
+	//}
+			
 	if (redundant != true) {
         	myList.add(address);
 	}
@@ -70,7 +85,7 @@ public class IpDAO {
     }
     /**retrieveRecord method attempts to return a record with an ID attribute that matches user input
      *
-     *@return			If the for loop successfully matches an ID, the address is returned. Should the for loop fail,                            *                          null(substance of nothing) is returned
+     *@return			If the for loop successfully matches an ID, the address is returned. Should the for loop fail, null(substance of nothing) is returned
      */
     public Address retrieveRecord(int id) {
         for (Address address : myList) {
