@@ -4,9 +4,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-/**
+/**IpApp class
  *
- * @author Your Name Here
+ * @author Marshall Ehlinger
+ * @author Jon VanZile
+ * @author John Phillips (provided starting source code)
+ *
  */
 public class IpApp {
 
@@ -16,9 +19,6 @@ public class IpApp {
     Pattern ipRegex = Pattern.compile(ipRegexString);
     Matcher ipMatcher;
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         new IpApp();
     }
@@ -26,7 +26,9 @@ public class IpApp {
     public IpApp() {
         menuLoop();
     }
-
+    /**
+     menuLoop method: while loop scans input to select desired case
+     */
     private void menuLoop() {
         int id;
         String rawIp, date;
@@ -43,9 +45,18 @@ public class IpApp {
             choice = Validator.getLine(sc, "Number of choice: ", "^[0-5]$");
 
             switch (choice) {
+		/**
+		 *case "1": prints contents of ipList (as a string) to STDOUT 
+                 */
                 case "1":
                     System.out.println(ipList.toString());
                     break;
+		/**
+		 *case "2": Makes relevant method calls to generate the ID, IP Address, and date; based on user input
+		 *
+		 *@param sc			This is the user input to be fed to the relevant methods
+		 *@param ipRegesString		ipRegexString is standard form that the user entered IP is checked against
+		 */
                 case "2":
                     id = Validator.getInt(sc, "New address ID: ");
                     rawIp = Validator.getLine(sc, "IP Address: ", ipRegexString);
@@ -56,10 +67,19 @@ public class IpApp {
                     date = Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.createRecord(new Address(id, ip, date));
                     break;
+		/**
+		 *case "3": Takes user input to retrieve a record whos ID matches the input
+		 *
+		 *@param sc					This is the user input, in this case it is the ID of the desired record
+		 *@param ipList.retrieveRecord(id)		Resolves to contents of specified (by id) record
+ 		 */
                 case "3":
                     id = Validator.getInt(sc, "Address id to retrieve: ");
                     System.out.println(ipList.retrieveRecord(id));
                     break;
+		/**
+		 *case "4": 
+		 */
                 case "4":
                     id = Validator.getInt(sc, "Address ID to update: ");
                     rawIp = Validator.getLine(sc, "IP Address: ", ipRegexString);
