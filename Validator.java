@@ -6,6 +6,8 @@ import java.util.Scanner;
  * Prompts for and then validates console based input.
  * Based in part on code from Murach's Java SE 6 by Joel Murach, et. al.
  *
+ * @author Marshall Ehlinger
+ * @author Jon VanZile
  * @author John Phillips
  */
 public class Validator {
@@ -14,9 +16,8 @@ public class Validator {
      * Prompts the user with a message and then retrieves what the user types as
      * a String.
      *
-     * @param sc
-     * @param prompt
-     * @return
+     * @param sc		The user input
+     * @param prompt		String providing context for the user before input is entered
      */
     public static String getLine(Scanner sc, String prompt) {
         System.out.print(prompt);
@@ -33,10 +34,10 @@ public class Validator {
      * of "^\d\d-\d\d-\d\d\d\d$" would require a date in the form of
      * "11-01-2014" to be entered.
      *
-     * @param sc
-     * @param prompt
-     * @param regex
-     * @return
+     * @param sc		The user input	
+     * @param prompt		String providing context for the user before input is entered
+     * @param regex		A regular expression for comparing entered values against a designated format
+     * @return			returns String s, the contents of which change based on outcome of if statement		
      */
     public static String getLine(Scanner sc, String prompt, String regex) {
         boolean isValid = false;
@@ -56,12 +57,12 @@ public class Validator {
     }
 
     /**
-     * Prompts the user with a message and then retrieves what the user types as
+     * Prompts the user with a message and then retrieves the user input as
      * an integer.
      *
-     * @param sc
-     * @param prompt
-     * @return
+     * @param sc		user input
+     * @param prompt		String providing context to user for desired input
+     * @return			Returns an integer "i", if sc was found to be valid, the "i" will be returned, containing the contents of sc
      */
     public static int getInt(Scanner sc, String prompt) {
         boolean isValid = false;
@@ -79,6 +80,15 @@ public class Validator {
         return i;
     }
 
+    /**
+     *Prompts the user for input and retrives input as an integer, then compares user input against a minimum and maximum value
+     *
+     * @param sc		User input, stored as an integer
+     * @param prompt		String providing context to the user before input is entered
+     * @param min		Lower value that user input is compared against, if input is lower than "min" an  error is generated
+     * @param max		Upper value that user input is compared against, if input is greater than "max" an error is generated
+     * @return			So long as user input is within "min" and "max" integers, "i" is returned, containing the user input integer
+     */
     public static int getInt(Scanner sc, String prompt, int min, int max) {
         boolean isValid = false;
         int i = 0;
@@ -118,7 +128,16 @@ public class Validator {
         }
         return i;
     }
-
+ /**
+     *Prompts the user for input and retrives input as a long integer, then compares user input against a minimum and maximum value
+     *
+     * @param sc		User input, stored as an integer
+     * @param prompt		String providing context to the user before input is entered
+     * @param min		Lower value that user input is compared against, if input is lower than "min" an  error is generated
+     * @param max		Upper value that user input is compared against, if input is greater than "max" an error is generated
+     * @return			So long as user input is within "min" and "max" long integers, "i" is returned, containing the user input 
+     *				long iteger
+     */
     public static long getLong(Scanner sc, String prompt, long min, long max) {
         boolean isValid = false;
         long i = 0;
@@ -134,7 +153,13 @@ public class Validator {
         }
         return i;
     }
-
+    /**
+     *Prompts the user for input and retrives input as a double, then compares user input against a minimum and maximum value
+     *
+     * @param sc		User input
+     * @param prompt		String providing context to the user before input is entered
+     * @return			Returns variable d of data type double, containing user input (if found to be valid). Otherwise d contains "0"
+     */ 
     public static double getDouble(Scanner sc, String prompt) {
         boolean isValid = false;
         double d = 0;
@@ -150,7 +175,16 @@ public class Validator {
         }
         return d;
     }
-
+    
+    /**
+     *Prompts the user for input and retrives input as a double, then compares user input against a minimum and maximum value
+     *
+     * @param sc		User input, stored as a double if found to be valid
+     * @param prompt		String providing context to the user before input is entered
+     * @param min		Lower value that user input is compared against, if input is lower than "min" an  error is generated
+     * @param max		Upper value that user input is compared against, if input is greater than "max" an error is generated
+     * @return			So long as user input is within "min" and "max", variable d is returned, containing the user input double
+     */ 
     public static double getDouble(Scanner sc, String prompt, double min,
             double max) {
         boolean isValid = false;

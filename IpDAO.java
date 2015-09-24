@@ -11,19 +11,30 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**IpDAO class
  *
- * @author Your Name Here
+ * @author Marshall Ehlinger
+ * @author Jon VanZile
+ * @author John Phillips (Provided initial source code)
  */
 public class IpDAO {
 
     private final String fileName;
     protected final List<Address> myList;
 
+    /**
+     *IpDAO constructor instantiates the IpDAO class
+     *
+     *@param ipdata.txt 			Name of the file that will house stored records. 
+     *						Specifically, this is passed into IpDAO(String fileName) method
+     */
     public IpDAO() {
         this("ipdata.txt");
     }
-
+    /**
+     *IpDAO method attempts to create a file named by the contents of "fileName" variable, 
+     *if file already exists, and error message is displayed to console
+     */
     public IpDAO(String fileName) {
         this.fileName = fileName;
         this.myList = new ArrayList<>();
@@ -36,7 +47,11 @@ public class IpDAO {
         }
         readList();
     }
-
+    /**createRecord instantiates an Address object, while the for loop checks the entered shortIp attribute against the previously stored records. 
+     * 
+     * 
+     * @param currentEntry.getNumAccess()+1		Adds "1" to the numAccess attribute of the original record when a duplicate ip entry is detected by the for loop
+     */
     public void createRecord(Address address) {
 	Address currentEntry;
 	boolean redundant = false;
@@ -53,7 +68,10 @@ public class IpDAO {
 	}
         writeList();
     }
-
+    /**retrieveRecord method attempts to return a record with an ID attribute that matches user input
+     *
+     *@return			If the for loop successfully matches an ID, the address is returned. Should the for loop fail,                            *                          null(substance of nothing) is returned
+     */
     public Address retrieveRecord(int id) {
         for (Address address : myList) {
             if (address.getIpID() == id) {
@@ -62,7 +80,8 @@ public class IpDAO {
         }
         return null;
     }
-
+    /**updateRecord method passes attributes into preexisting Address record
+     */
     public void updateRecord(Address updatedAddress) {
         for (Address address : myList) {
             if (address.getIpID() == updatedAddress.getIpID()) {
@@ -74,7 +93,9 @@ public class IpDAO {
         }
         writeList();
     }
-
+    /**deleteRecord(int id) method matches input to preexisting address id attribute, address record is removed from the list of records
+     *
+     */
     public void deleteRecord(int id) {
         for (Address address : myList) {
             if (address.getIpID() == id) {
@@ -84,12 +105,15 @@ public class IpDAO {
         }
         writeList();
     }
-
+    /**deleteRecord(Address address) method takes an address and deletes that address from the list of records
+     *
+     */
     public void deleteRecord(Address address) {
         myList.remove(address);
         writeList();
     }
-
+    /**readList() method reads stored records from file named by fileName variable and attempts to assign record attributes to a new Address
+     */
     protected void readList() {
         Path path = Paths.get(fileName);
         try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
@@ -107,7 +131,8 @@ public class IpDAO {
             System.out.println("Read file error with " + ioe.getMessage());
         }
     }
-
+    /**writeList() method formats address atributes and writes them to a file named by the string stored in fileName variable
+     */
     protected void writeList() {
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {

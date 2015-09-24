@@ -4,6 +4,7 @@
  *
  * @author Marshall Ehlinger
  * @author Jon VanZile
+ * @author John Phillips (Initial source code)
  */
 public class Address {
 
@@ -24,7 +25,7 @@ public class Address {
     /**Passes input into Address attributes
      *
      *@param ipId			(integer) ID attribute of a record
-     *@param shortIp			(string)  First two sets of digits for uder inputted IP Address
+     *@param shortIp			(string)  First two sets of digits for user input IP Address
      *@param entryDate			(string)  Date attribute of a record
      */
     public Address(int ipId, String shortIP, String entryDate) {
@@ -33,8 +34,7 @@ public class Address {
         this.entryDate = entryDate;
        	numAccess = 1;
     }
-    /**getEntryDate returns entryDate attribute for a given instantiated Address
-     */
+    
     public String getEntryDate() {
         return entryDate;
     } 

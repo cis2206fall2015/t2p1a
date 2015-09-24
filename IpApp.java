@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
  *
  * @author Marshall Ehlinger
  * @author Jon VanZile
- * @author John Phillips (provided starting source code)
+ * @author John Phillips (provided initial source code)
  *
  */
 public class IpApp {
@@ -27,7 +27,9 @@ public class IpApp {
         menuLoop();
     }
     /**
-     menuLoop method: while loop scans input to select desired case
+     *menuLoop method: while loop scans input to select desired case
+     *
+     *@param sc				User input, assigned to choice variable for the purpose of selecting desired case
      */
     private void menuLoop() {
         int id;
@@ -78,7 +80,7 @@ public class IpApp {
                     System.out.println(ipList.retrieveRecord(id));
                     break;
 		/**
-		 *case "4": 
+		 *case "4": Takes user input to change attributes of a previously created record 
 		 */
                 case "4":
                     id = Validator.getInt(sc, "Address ID to update: ");
@@ -90,6 +92,10 @@ public class IpApp {
                     date = Validator.getLine(sc, "Entry Creation Date: ");
                     ipList.updateRecord(new Address(id, ip, date));
                     break;
+		/**
+		 *case "5": Matches user input to the ID of a preexisting record, deletes specified record
+		 *
+		 */
                 case "5":
                     id = Validator.getInt(sc, "Address ID to delete: ");
                     System.out.println(ipList.retrieveRecord(id));
